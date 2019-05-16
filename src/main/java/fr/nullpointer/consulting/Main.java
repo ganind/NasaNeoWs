@@ -8,7 +8,7 @@ class Main{
         try {
             maRechercheData.funcRecherche();
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace();//log error
         }
     }
 }
