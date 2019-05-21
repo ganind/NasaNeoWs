@@ -12,7 +12,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 
 public class RechercheData {
-    public String siteApi = "http://google.fr"; //variable de l'url de l'api
+    public String siteApi = "https://api.nasa.gov/neo/rest/v1/feed?start_date=2019-01-01&end_date=2019-01-06&api_key=DEMO_KEY"; //variable de l'url de l'api
 
     public void funcRecherche() throws IOException {
 
