@@ -1,6 +1,6 @@
 package fr.nullpointer.consulting;
 
-import org.apache.kafka.clients.producer.KafkaProducer;
+/*import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.admin.AdminClient;
@@ -61,4 +61,40 @@ public class Producer
             String progressBar = "\r" + progressAnimation.charAt(i % progressAnimation.length()) + " " + i;
             System.out.write(progressBar.getBytes());
         }
+    }*/
+
+import java.util.*; //utilise toutes les classes du pack java.util
+import org.apache.kafka.clients.producer.*;
+
+public class SimpleProducer {
+
+    public void createMessage() {
+
+        String topicName = "nasa"; //nom du topic créer sur le serveur kafka
+        String key = "Key1"; //clé usitilé par kafka pour identifier de maniere unique le message
+        String value = "Hello World"; //message a transmettre au serveur kafka
+
+        Properties props = new Properties();
+        props.put("bootstrap.servers", "34.73.213.133:2181");
+        props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+
+        Producer<String, String> producer = new KafkaProducer<>(props);
+
+        ProducerRecord<String, String> record = new ProducerRecord<>(topicName, key, value);
+        producer.send(record,
+                new Callback() {
+                    public void onCompletion(RecordMetadata metadata, Exception e) {
+                        if(e != null) {
+                            e.printStackTrace();
+                        } else {
+                            System.out.println("The offset of the record we just sent is: " + metadata.offset());
+                        }
+                    }
+                });
+        producer.flush();
+        producer.close();
+
+        System.out.println("SimpleProducer Completed.");
     }
+}
