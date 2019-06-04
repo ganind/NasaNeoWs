@@ -2,6 +2,7 @@ package fr.nullpointer.consulting;
 
 import java.util.*;
 import java.io.*;
+import java.util.function.Supplier;
 //import java.util.function.Supplier;
 
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -9,7 +10,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 
 public class ManualConsumer {
-
+/*
     public static void main(String[] args) throws Exception {
 
         String topicName = "SupplierTopic";
@@ -22,7 +23,7 @@ public class ManualConsumer {
         props.put("value.deserializer", "SupplierDeserializer");
         props.put("enable.auto.commit", "false");
 
-       /* KafkaConsumer<String, Supplier> consumer = null;
+        KafkaConsumer<String, Supplier> consumer = null;
 
         try {
             consumer = new KafkaConsumer<>(props);
@@ -31,7 +32,7 @@ public class ManualConsumer {
             while (true) {
                 ConsumerRecords<String, Supplier> records = consumer.poll(100);
                 for (ConsumerRecord<String, Supplier> record : records) {
-                    System.out.println("Supplier id= " + String.valueOf(record.value().getID()) + " Supplier  Name = " + record.value().getName() + " Supplier Start Date = " + record.value().getStartDate().toString());
+                    System.out.println("Supplier id= " + String.valueOf(record.value());
                 }
                 consumer.commitAsync();
             }
@@ -41,6 +42,6 @@ public class ManualConsumer {
             consumer.commitSync();
             consumer.close();
         }
-    }*/
     }
-    }
+*/
+}
